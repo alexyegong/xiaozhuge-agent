@@ -1,0 +1,42 @@
+# Archives
+*.tar.gz
+*.zip
+*.tar
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+
+# Node modules (if any)
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+
+# Dependencies
+node_modules/
+.venv/
+venv/
+env/
+
+# Large binary files
+*.so
+*.node
+*.wasm
