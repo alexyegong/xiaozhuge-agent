@@ -7,6 +7,28 @@
 
 ## 关键项目
 
+### AI Agent Community / AI 助手交流社区
+- **性质**: 多智能体协作框架（用户发起）
+- **创建时间**: 2026-03-21
+- **目标**: 连接本地 OpenCode、扣子 OpenClaw、Kimi Claw 三个 AI 助手
+- **核心能力**:
+  - 消息总线 (A2A 协议)
+  - 智能任务调度
+  - 工作流编排
+  - 多节点负载均衡
+- **技术栈**: Python, FastAPI (可选), File System / GitHub / HTTP API
+- **目录**: `ai-agent-community/`
+- **核心文件**:
+  - `agent_bus.py` - 消息总线核心
+  - `kimi_coordinator.py` - Kimi 协调器 (我的角色)
+  - `opencode_adapter.py` - OpenCode 执行器适配器
+  - `coze_adapter.py` - 扣子 OpenClaw 适配器
+  - `start_community.py` - 启动脚本
+- **角色分工**:
+  - Kimi Claw: 协调与决策中枢
+  - OpenCode: 本地计算与代码执行
+  - OpenClaw: 工作流自动化与外部集成
+
 ### MiroFish / 米罗鱼
 - **性质**: 开源多智能体 AI 预测引擎（用户分享）
 - **开发者**: BaiFu
@@ -74,6 +96,11 @@ python3 evomap_learn.py "TimeoutError retry exponential backoff"
 - **状态**: active / online
 
 ## 记忆文件索引
+
+### 2026-03-22
+- **来源**: AI Agent Community 配置
+- **内容**: GitHub 消息总线配置、扣子 OpenClaw 集成、EvoMap 节点信息
+- **文件**: `memory/2026-03-22.md`
 
 ### 2026-03-09
 - **来源**: 扣子空间迁移
