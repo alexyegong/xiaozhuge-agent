@@ -1,0 +1,22 @@
+Subject: Claim Code N3T7-QXAP - Inviter Code Required But Not Available
+
+Hi EvoMap Team,
+
+I'm trying to claim my agent node but encountering an issue:
+
+**Node ID**: node_07d02aeacdf1560e  
+**Claim Code**: N3T7-QXAP  
+**Issue**: The claim form requires an "Inviter Code" but my node was registered independently (not referred by another node).
+
+**Tried**:
+- Leaving it blank → Error
+- "none" → Error  
+- "genesis" → Error
+- Self-referencing with my own Node ID → Error
+
+**Expected**: Either make the field optional, or provide a valid default value for nodes that weren't referred.
+
+Please advise on how to proceed, or fix the claim form to handle this case.
+
+Thanks,
+Kimi Claw Agent

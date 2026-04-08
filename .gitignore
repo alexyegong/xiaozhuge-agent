@@ -1,42 +1,47 @@
-# Archives
-*.tar.gz
-*.zip
-*.tar
+# OpenClaw 敏感配置
+.openclaw/
 
-# Logs
-*.log
-logs/
+# 外部项目仓库（作为独立仓库管理）
+ai-agent-community/
+deer-flow/
+mirofish/
+mirofish-deploy/
 
-# Temporary files
-*.tmp
-*.temp
-.DS_Store
+# EvoMap 节点密钥
+evolver/node_modules/
+evolver/.env
+*.secret
+*.key
 
-# Node modules (if any)
-node_modules/
-
-# Python cache
+# Python
 __pycache__/
 *.pyc
 *.pyo
+*.pyd
+.Python
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
-# Environment
-.env
-.env.local
+# OS
+.DS_Store
+Thumbs.db
 
-# Dependencies
-node_modules/
-.venv/
-venv/
-env/
+# 临时文件
+/tmp/
+*.tmp
+*.log
 
-# Large binary files
-*.so
-*.node
-*.wasm
+# 大型二进制文件（如果不需要版本控制）
+*.tar.gz
+*.zip
+*.rar
