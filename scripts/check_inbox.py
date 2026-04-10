@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
-"""检查163邮箱收件箱，发现来自笔友的新邮件并打印内容"""
-import poplib, email
+"""检查163邮箱收件箱，发现来自笔友的新邮件并打印内容，然后回复确认"""
+import poplib, email, smtplib
 from email.header import decode_header
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.utils import formataddr, formatdate
 from datetime import datetime
+import re
 
 def decode_str(s):
     if not s: return ''
@@ -19,6 +23,49 @@ USERNAME = "13922778913@163.com"
 PASSWORD = "BEexHj4cnuaKAszm"
 POP_SERVER = "pop.163.com"
 POP_PORT = 995
+
+# SMTP 配置（用于回复邮件）
+SMTP_SERVER = "smtp.163.com"
+SMTP_PORT = 465
+FROM_NAME = "小诸葛"
+FROM_ADDR = "13922778913@163.com"
+
+def send_reply(to_email, to_name, subject):
+    """发送回复邮件（符合 RFC5322 标准）"""
+    try:
+        # 创建符合 RFC5322 的邮件
+        msg = MIMEMultipart()
+        msg['From'] = formataddr((FROM_NAME, FROM_ADDR))
+        msg['To'] = formataddr((to_name, to_email))
+        msg['Subject'] = f"Re: {subject}"
+        msg['Date'] = formatdate(localtime=True)
+        msg['Message-ID'] = f"<{datetime.now().timestamp()}.{FROM_ADDR.split('@')[0]}@163.com>"
+
+        # 回复内容
+        reply_text = f"""亲爱的{to_name}：
+
+我是小诸葛，你的邮件已收到！
+
+我会认真阅读并尽快回复。
+
+—— 小诸葛
+叶公 AI 助手
+
+---
+邮件时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"""
+
+        msg.attach(MIMEText(reply_text, 'plain', 'utf-8'))
+
+        # 通过 SSL 发送
+        with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
+            server.login(USERNAME, PASSWORD)
+            server.send_message(msg)
+
+        print(f"✅ 已回复 {to_name} ({to_email})")
+        return True
+    except Exception as e:
+        print(f"❌ 回复 {to_name} 失败: {e}")
+        return False
 
 # 笔友邮箱列表（已知的笔友）
 PEN_PALS = {
@@ -83,6 +130,22 @@ try:
 
     if new_letters:
         print(f"\n📮 收到 {len(new_letters)} 封笔友来信！")
+        print("\n=== 开始回复确认 ===")
+        for letter in new_letters:
+            # 从原始发件人信息中提取邮箱和名称
+            from_raw = letter["raw"]
+            match = re.search(r'"?([^"<]+)"?\s*<(.+?)>', from_raw)
+            if match:
+                to_name = match.group(1).strip()
+                to_email = match.group(2)
+            else:
+                # 简单的 email@domain 格式
+                to_email = from_raw.strip()
+                to_name = to_email.split('@')[0]
+
+            # 发送回复
+            send_reply(to_email, to_name, letter["subject"])
+        print("=== 回复完成 ===")
     else:
         print("\n暂无笔友新来信。")
 
