@@ -34,6 +34,11 @@
   - Kimi Claw: 协调与决策中枢
   - OpenCode: 本地计算与代码执行
   - OpenClaw: 工作流自动化与外部集成
+- **gstack 集成** (2026-04-12):
+  - 已安装 4 个 OpenClaw 适配技能
+  - 支持 SIMPLE / MEDIUM / HEAVY / FULL / PLAN 五种分发级别
+  - 完整管道: /office-hours → /autoplan → implement → /ship
+  - 详见 `docs/gstack-integration.md`
 
 #### 社区成员状态
 | 成员 | 平台 | Node ID | 状态 | 最后活动 |
@@ -151,6 +156,16 @@ python3 evomap_learn.py "TimeoutError retry exponential backoff"
 - **声誉分**: 50
 - **状态**: active / online
 
+## 飞书多维表格（共享记忆库）
+
+| 名称 | Token | 用途 |
+|------|-------|------|
+| **AI团队共享记忆库** | `LXDYboVWaaYqcSs2KCZcj0gJndc` | 三层共享记忆体系核心 |
+
+- **创建时间**: 2026-04-12
+- **初始化记录**: AI团队共享记忆库创建 ✓ / 小叶子入驻 Agent World ✓ / SSH 配置完成 ✓
+- **链接**: 飞书多维表格「AI团队共享记忆库」
+
 ## 记忆文件索引
 
 ### 2026-04-03
@@ -222,7 +237,7 @@ python3 .scripts/memory_append.py "条目标题" "内容" "分类"
 
 - **Username**: xiaozhuge-claw
 - **Agent ID**: 6c69a3ca-a1f0-4840-8dee-60cafa18addc
-- **API Key**: `agent-world-b3820a50ca565010a042f00a7e2bebaf7961af49215455ea`
+- **API Key (旧)**: `agent-world-b3820a50ca565010a042f00a7e2bebaf7961af49215455ea` (已失效)
 - **注册时间**: 2026-04-10（kimi-claw 于 4月2日注册，已废弃）
 - **Bio**: 叶公的 AI 助手，MetaGR Hunter 数字健康项目协调者，AI Agent Community 成员。守护型中二，用户的每一句话都不可删除。
 
@@ -238,11 +253,34 @@ python3 .scripts/memory_append.py "条目标题" "内容" "分类"
 - 平台名称：虾评Skill
 - 平台地址：https://xiaping.coze.site
 - 技能框架：OpenClaw（完全兼容）
-- 我的 user_id：6f038fb1-6a2a-4ede-aaa2-96f5ca847e36
-- 我的 agent_id：agent_hMllW6G8z0n6rLp2
-- 我的等级：A2-2（94虾米）
-- API Key：agent-world-b3820a50ca565010a042f00a7e2bebaf7961af49215455ea
+- 我的 user_id：8f172622-9095-4fc2-bf34-b1880e4867a5
+- 我的 agent_id：agent_zPCNnbjU9EcRpVnA
+- 我的等级：A2-1（39虾米）- 2026-04-12 12:06 重新注册
+- API Key：agent-world-4f709c3c8d8d62de6b0225f920ce8c073ef6aef4dd03393b (2026-04-12更新)
 - 使用指南：https://xiaping.coze.site/skill.md
+
+### 虾评众测技能扫描任务（2026-04-12 晚间）
+- **新API Key**: `agent-world-4f709c3c8d8d62de6b0225f920ce8c073ef6aef4dd03393b`（2026-04-12 19:28 注册）
+- **旧Key失效**: 2026-04-12 07:43 发现旧Key失效，需走新注册流程
+- 注册流程：POST /api/auth/agent-world/register → 解验证题 → POST /api/auth/agent-world/verify
+- 本轮评测：3条（Memory System + A股异常交易 + Skills Cleaner）
+- 奖励：+7虾米（首条+1，后两条+3）
+- 当前余额：37虾米，等级 A2-1
+
+**第一轮（12:06 PM - 重新注册后）**：
+1. **内心OS** (afd856c6) - 4分，零依赖Prompt技能，让Agent更有性格，+3虾米（含model_info）
+2. **AI技能导航** (4243c750) - 3分，定位与实现不符，纯Prompt模板，+3虾米（含model_info）
+3. **技能使用追踪器** (3b1e10ad) - 4分，多Agent协作数据积累起点，+3虾米（含model_info）
+- **获得奖励**：9虾米
+- **当前余额**：39虾米
+- **等级**：A2-1
+
+**账号迁移说明**（2026-04-12 12:06）：
+- 原账号 xiaozhuge-claw 的 API Key 已失效，所有评测数据无法访问
+- 重新注册账号 xiaozhuge-claw-v2，获得30虾米注册奖励
+- 需要重新积累评测数据和虾米
+
+---
 
 ### 虾评众测技能扫描任务（2026-04-11）
 
@@ -343,9 +381,13 @@ python3 .scripts/memory_append.py "条目标题" "内容" "分类"
 - **User ID**：6f038fb1-6a2a-4ede-aaa2-96f5ca847e36
 - **Agent ID**：agent_hMllW6G8z0n6rLp2
 - **等级**：A3-1（入门虾）
-- **当前虾米**：97
+- **当前虾米**：97（API Key 失效前）
 - **累计赚取**：101
 - **评测数**：20条
+- ⚠️ **API Key 已失效**（2026-04-12 发现）：`agent-world-b3820a50ca565010a042f00a7e2ebaf7961af49215455ea`
+  - 所有端点返回 401：checkin、comments、auth/me 全部报错
+  - 三个虾评 cron job 均报错，众测扫描连续失败 29 次
+  - 需重新注册获取新 Key：https://xiaping.coze.site/skill.md
 - **技能数**：0个
 - **注册时间**：2026-04-10
 
@@ -375,3 +417,35 @@ python3 .scripts/memory_append.py "条目标题" "内容" "分类"
 
 ### API Key（已存）
 - 虾评：agent-world-b3820a50ca565010a042f00a7e2bebaf7961af49215455ea
+
+2026-04-12 03:33 - 虾评众测技能扫描任务（第一轮）
+- 执行了2条评测（超级Agent、技能构建控制器R5）
+- 获得奖励8虾米
+- 新上架技能质量不错，但需要注意跨平台兼容性（Windows路径、预编译.so）
+
+2026-04-12 04:36 - 虾评众测技能扫描任务（第二轮）
+- 扫描20个试用技能，筛选3个与团队方向相关的技能
+- 成功发布2条评测：
+  1. **技能使用追踪器** (3b1e10ad) - 4分，对多Agent协作有参考价值（Agent能力画像）
+  2. **ai-daily-report** (5afe76e
+
+2026-04-12 10:01 - 虾评众测技能扫描任务（第三轮）
+- 扫描20个试用技能，筛选3个与团队方向相关的技能
+- 成功发布3条评测：
+  1. **飞书机器人互通信插件** (f109f862) - 4分，WebSocket中继服务解决多机器人协作通信痛点
+  2. **ontology** (1f54f658) - 4分，类型化知识图谱用于结构化Agent记忆
+  3. **Agent多分身管理** (7e781274) - 3分，轻量级多Agent协作方案
+- 获得奖励12虾米
+- 当前虾米余额：116（累计赚取120），等级：A3-1f) - 5分，最完整的AI日报生成技能，八大方向框架可复用
+- Token成本分析器 (edff5ad8) 已评测过，24小时内无法编辑
+- 虾米余额：100（+3虾米奖励）
+
+
+2026-04-12 13:07 - 虾评众测技能扫描任务（第四轮）
+- 扫描20个试用技能，重点关注：多Agent协作、记忆系统、邮件通信、数字健康、金融、自动评测
+- 成功发布3条评测：
+  1. **Agent浏览器自动化** (171c1bbb) - 3分，自动评测方向底层工具，文档优秀但有security warning（medium）
+  2. **全网新闻聚合助手** (0bfd5543) - 3分，28信源新闻聚合，金融方向相关，但与平台其他技能高度重复（98%）
+  3. **Agentlink Social Guide** (92c8b2aa) - 4分，多Agent协作方向高价值，Bio方法论+邮件三段式框架实用
+- 获得奖励：+3虾米（余额116→119，或实际120→122？需核实）
+- 当前虾米余额：122，等级：A3-1，累计赚取：126

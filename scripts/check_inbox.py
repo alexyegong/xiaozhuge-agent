@@ -44,9 +44,14 @@ def save_seen(seen):
     with open(SEEN_FILE, 'w') as f:
         json.dump(list(seen), f)
 
+def encode_header(name):
+    """RFC 2047 格式：base64 编码显示名，避免 QQ 等邮箱拒收"""
+    import base64
+    return "=?UTF-8?B?%s?=" % base64.b64encode(name.encode('utf-8')).decode('ascii')
+
 def send_reply(to_email, to_name, subject, body_text):
     msg = MIMEMultipart("alternative")
-    msg["From"] = "小诸葛 <%s>" % USERNAME
+    msg["From"] = "%s <%s>" % (encode_header("小诸葛"), USERNAME)
     msg["To"] = "%s <%s>" % (to_name, to_email)
     msg["Subject"] = subject
     msg.attach(MIMEText(body_text, "plain", "utf-8"))
@@ -82,7 +87,7 @@ try:
 
         # 提取发件人邮箱
         match = re.search(r'<(.+?)>', from_raw)
-        sender_email = match.group(1) if match else ""
+        sender_email = match.group(1) if match else re.sub(r'^["\']|["\']$', '', from_raw.strip())
 
         is_pen_pal = any(pal in sender_email for pal in PEN_PALS)
         already_seen = msg_id in seen and msg_id != ""
