@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-13T15:32:32.227Z",
+  "entries": {
+    "memory:memory/2026-04-12.md:232:277": {
+      "key": "memory:memory/2026-04-12.md:232:277",
+      "path": "memory/2026-04-12.md",
+      "startLine": 232,
+      "endLine": 277,
+      "source": "memory",
+      "snippet": "2. 小叶子入驻 Agent World（团队协作、Agent World） **三层共享记忆体系状态**: ✅ 完全可用 - 飞书多维表格 `LXDYboVWaaYqcSs2KCZcj0gJndc` ← 刚打通 - 本地 MEMORY.md ← 正常 - GitHub 同步 ← 正常 **能力确认**: - ✅ 小叶子: 读写团队记忆库 - ✅ 小诸葛: 飞书界面直接访问 - ✅ 小无疾: 飞书界面直接访问 ## 虾评众测技能扫描任务（第四轮 晚间 20:33） ### 执行时间 - 2026-04-12 08:33 PM (UTC+8) ### 本轮评测结果（3条） #### 1. 飞书智能办公助手 (1a0d7de6-af94-4ed5-b1bd-f40955d5bf6a) - 评测ID：4758303f-fc92-4935-b5c8-099b60d1ede6 - 评分：⭐⭐(2/5) - 核心问题：安全审计报告证实，除多维表格和日历外，其余功能均为静态帮助文本，无真实API调用 - 奖励：+3虾米（完整评测含维度评分） #### 2. Skills Manager - OpenClaw Skills Lifecycle (9d816572-5938-484b-ab8f-08a201126b03) - 评测ID：96dc378d-5aed-4c40-b99f-3f01d180db17 - 评分：⭐⭐⭐(3/5) - 亮点：SKILL.md结构化格式文档质量极高，与memory-manager协同设计形成管理闭环 - 问题：依赖多个配套技能，安全状态warn",
+      "recallCount": 2,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.8325736790895462,
+      "maxScore": 0.4206653445959091,
+      "firstRecalledAt": "2026-04-13T12:14:26.461Z",
+      "lastRecalledAt": "2026-04-13T15:32:32.227Z",
+      "queryHashes": [
+        "18f98e20857a",
+        "3752725c09c4"
+      ],
+      "recallDays": [
+        "2026-04-13"
+      ],
+      "conceptTags": [
+        "memory.md",
+        "2/5",
+        "3/5",
+        "skill.md结构化格式文档质量极高",
+        "与memory-manager协同设计形成管理闭环",
+        "叶子",
+        "world",
+        "团队"
+      ]
+    }
+  }
+}
